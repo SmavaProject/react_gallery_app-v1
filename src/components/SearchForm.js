@@ -1,31 +1,23 @@
-import React from "react";
-import {Form, FormControl, FormGroup, Button} from "react-bootstrap";
-import {Component }from 'react';
+import React, {Component }from 'react';
+import { ReactComponent as SearchSVG } from '../static/icons8-search.svg';
 
 class SearchForm extends Component {
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(e);
+        debugger;
+    }
+
     render() {
         return (
-
-
-            < Form
-        inline >
-        < FormGroup
-        controlId = "formInlineEmail" >
-            < FormControl
-        type = "search"
-        placeholder = "enter something..." / >
-            < /FormGroup>
-        {
-            ' '
-        }
-    <
-        Button
-        type = "submit" >
-            search
-            < /Button>
-            < /Form>
-    )
-        ;
+            <form onSubmit={this.handleSubmit} className="search-form">
+                < input type="search" name="search" placeholder="Search" / >
+                <button type = "submit" >
+                <SearchSVG/>
+            </button>
+            </form>
+        );
     }
 }
 export default SearchForm

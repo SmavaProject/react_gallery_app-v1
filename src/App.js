@@ -1,22 +1,40 @@
 import React, {Component} from 'react';
-import {Jumbotron, Container} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import Nav from "./components/Nav";
 import Photo from "./components/Photo";
 import SearchForm from "./components/SearchForm";
+import {BrowserRouter, Route} from 'react-router-dom';
+import PhotosContainer from "./components/PhotosContainer";
 
-const App = () =>{
-    return (
-        < div >
-            < Jumbotron >
-                < Container >
-                    < h1 > Search App < /h1>
-                    < p > This is a simple search app < /p>
-                    <SearchForm />
-                < /Container>
-            < /Jumbotron>
-            <Photo/>
-        < /div>
+class App  extends Component{
+    state = {
+        photos: [
+            {
+                name: "Photo1",
+                id: 1,
+                link: "lala"
+            },
+            {
+                name: "Photo2",
+                id: 2,
+                link: "lala"
+            }
+        ]
+    }
+
+    render() {
+        return (
+            <BrowserRouter>
+                < div className="container">
+                    <Route render={ () => <SearchForm /> } />
+                    <Route render={ () => <Nav/> } />
+
+                    <PhotosContainer
+                    photos={this.state.photos}/>
+                    < /div>
+            </BrowserRouter>
     );
+    }
 }
 
 export default App;

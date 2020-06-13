@@ -1,8 +1,14 @@
 import React from "react";
-import {Form, FormControl, FormGroup, Button} from "react-bootstrap";
+import {NavLink} from "react-router-dom";
 
 const Nav = () => (
-    <div></div>
+    <div className="main-nav">
+        <ul>
+        <li><NavLink to="/beach">Beach</NavLink></li>
+        <li><NavLink to="/mountains">Mountains</NavLink></li>
+        <li><NavLink to="/urban">Urban</NavLink></li>
+        </ul>
+    </div>
 
 );
 
