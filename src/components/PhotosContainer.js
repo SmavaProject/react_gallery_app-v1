@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from "react";
+import React, {Component} from "react";
 import Photo from "./Photo";
 
 class PhotosContainer extends Component{
