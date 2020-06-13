@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Container} from "react-bootstrap";
 import Nav from "./components/Nav";
 import Photo from "./components/Photo";
 import SearchForm from "./components/SearchForm";
@@ -17,6 +16,11 @@ class App  extends Component{
             {
                 name: "Photo2",
                 id: 2,
+                link: "lala"
+            },
+            {
+                name: "Photo3",
+                id: 3,
                 link: "lala"
             }
         ]

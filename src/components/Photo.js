@@ -4,10 +4,10 @@ class Photo extends Component{
 
     render(){
         return (
-            <li>
+            <div>
                 <p>{this.props.name}</p>
                 <p>{this.props.link}</p>
-            </li>
+            </div>
         );
     }
 

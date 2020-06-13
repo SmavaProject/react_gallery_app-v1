@@ -12,7 +12,7 @@ class SearchForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} className="search-form">
-                < input type="search" name="search" placeholder="Search" / >
+                <input type="search" name="search" placeholder="Search" / >
                 <button type = "submit" >
                 <SearchSVG/>
             </button>

@@ -11,13 +11,12 @@ class PhotosContainer extends Component{
         return (
             <div className="photo-container">
                 <ul>
-                   <li> {this.props.photos.map((photo, index) =>
-                         <Photo
+                   {this.props.photos.map((photo, index) =>
+                       <li>  <Photo
                              name={photo.name}
                              link={photo.link}
-                         />
+                         /></li>
                      )}
-                   </li>
                 </ul>
             </div>);
     }
