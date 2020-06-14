@@ -26,6 +26,7 @@ class App  extends Component{
     }
 
     handleSearch = (searchKey) => {
+        debugger;
         console.log("searching....");
         fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchKey}&per_page=24&format=json&nojsoncallback=1`)
         .then(response => response.json())
@@ -41,8 +42,8 @@ class App  extends Component{
         return (
             <BrowserRouter>
                 < div className="container">
-                    <Route render={ () => <SearchForm /> } />
-                    <Route render={ () => <Nav/> } />
+                    <Route render={ () => <SearchForm handleSearch={this.handleSearch}/> } />
+                    <Route render={ () => <Nav handleSearch={this.handleSearch} /> } />
 
                     <PhotosContainer
                     photos={this.state.photos}/>

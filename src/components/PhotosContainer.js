@@ -16,6 +16,8 @@ class PhotosContainer extends Component{
                             id={photo.id}
                             title={photo.title}
                             owner={photo.owner}
+                            src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
+                            alt={photo.title}
                          /></li>
                      )}
                 </ul>

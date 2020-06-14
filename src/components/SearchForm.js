@@ -3,16 +3,25 @@ import { ReactComponent as SearchSVG } from '../static/icons8-search.svg';
 
 class SearchForm extends Component {
 
+    searchInput = React.createRef();
+
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(e);
-        debugger;
+        
+        //this.props.handleSearch("cats");
     }
 
     render() {
+        debugger;
         return (
-            <form onSubmit={this.handleSubmit} className="search-form">
-                <input type="search" name="search" placeholder="Search" / >
+            <form onSubmit={ () => this.props.handleSearch(this.searchInput)} className="search-form">
+                <input 
+                type="search" 
+                name="search" 
+                placeholder="Search" 
+                ref={this.searchInput}
+                / >
                 <button type = "submit" >
                 <SearchSVG/>
             </button>

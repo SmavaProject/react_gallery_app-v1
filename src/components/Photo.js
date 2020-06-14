@@ -4,11 +4,7 @@ class Photo extends Component{
 
     render(){
         return (
-            <div>
-                <p>{this.props.id}</p>
-                <p>{this.props.title}</p>
-                <p>{this.props.owner}</p>
-            </div>
+            <img src={this.props.src} alt={this.props.alt}/>
         );
     }
 
