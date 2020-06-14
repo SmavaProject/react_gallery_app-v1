@@ -13,8 +13,9 @@ class PhotosContainer extends Component{
                 <ul>
                    {this.props.photos.map((photo, index) =>
                        <li>  <Photo
-                             name={photo.name}
-                             link={photo.link}
+                            id={photo.id}
+                            title={photo.title}
+                            owner={photo.owner}
                          /></li>
                      )}
                 </ul>
