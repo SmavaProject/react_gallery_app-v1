@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Nav from "./components/Nav";
-import Photo from "./components/Photo";
 import SearchForm from "./components/SearchForm";
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import PhotosContainer from "./components/PhotosContainer";
@@ -15,7 +14,7 @@ class App  extends Component{
         this.state = {
             photos : [],
             isLoading: false,
-            searchKey : "beach"
+            searchKey : ""
         };
     }
 
@@ -25,6 +24,10 @@ class App  extends Component{
     }
 
     handleSearch = (searchKey) => {
+        this.setState({ 
+            searchKey: searchKey
+        });
+
         debugger;
         console.log("searching....");
         fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchKey}&per_page=24&format=json&nojsoncallback=1`)
@@ -47,10 +50,11 @@ class App  extends Component{
 
                     <Switch>
                         <Route path="/search/:searchKey"  render={ () => <SearchForm handleSearch={this.handleSearch}/> }/>
-                        <PhotosContainer photos={this.state.photos}/>
+                        <PhotosContainer photos={this.state.photos}
+                                        title={this.state.searchKey}/>
                         <Route component={NotFound} />
                     </Switch>
-                < /div>
+                </div>
             </BrowserRouter>
     );
     }

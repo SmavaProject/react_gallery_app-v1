@@ -6,16 +6,16 @@ class SearchForm extends Component {
     searchInput = React.createRef();
 
     handleSubmit = (e) => {
+        debugger;
         e.preventDefault();
-        console.log(e);
-        
-        //this.props.handleSearch("cats");
+        this.props.handleSearch(this.searchInput.current.value);
+        e.currentTarget.reset();
     }
 
     render() {
         debugger;
         return (
-            <form onSubmit={ () => this.props.handleSearch(this.searchInput.current.value)} className="search-form">
+            <form onSubmit={ () =>this.handleSubmit} className="search-form">
                 <input 
                 type="search" 
                 name="search" 
