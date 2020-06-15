@@ -14,7 +14,7 @@ class App  extends Component{
         this.state = {
             photos : [],
             isLoading: false,
-            searchKey : ""
+            searchKey : "vacation"
         };
     }
 
