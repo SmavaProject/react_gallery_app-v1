@@ -15,7 +15,7 @@ class SearchForm extends Component {
     render() {
         debugger;
         return (
-            <form onSubmit={ () => this.props.handleSearch(this.searchInput)} className="search-form">
+            <form onSubmit={ () => this.props.handleSearch(this.searchInput.current.value)} className="search-form">
                 <input 
                 type="search" 
                 name="search" 

@@ -2,26 +2,25 @@ import React, {Component} from 'react';
 import Nav from "./components/Nav";
 import Photo from "./components/Photo";
 import SearchForm from "./components/SearchForm";
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import PhotosContainer from "./components/PhotosContainer";
+import NotFound from "./components/NotFound";
 
 import apiKey from "./config";
 
 class App  extends Component{
 
-    searchKey;
-
     constructor(){
         super();
         this.state = {
             photos : [],
-            isLoading: false
+            isLoading: false,
+            searchKey : "beach"
         };
     }
 
     componentDidMount(){
-        this.searchKey="beach";
-        this.handleSearch(this.searchKey);
+        this.handleSearch(this.state.searchKey);
 
     }
 
@@ -38,6 +37,7 @@ class App  extends Component{
 
 
 
+
     render() {
         return (
             <BrowserRouter>
@@ -45,12 +45,16 @@ class App  extends Component{
                     <Route render={ () => <SearchForm handleSearch={this.handleSearch}/> } />
                     <Route render={ () => <Nav handleSearch={this.handleSearch} /> } />
 
-                    <PhotosContainer
-                    photos={this.state.photos}/>
-                    < /div>
+                    <Switch>
+                        <Route path="/search/:searchKey"  render={ () => <SearchForm handleSearch={this.handleSearch}/> }/>
+                        <PhotosContainer photos={this.state.photos}/>
+                        <Route component={NotFound} />
+                    </Switch>
+                < /div>
             </BrowserRouter>
     );
     }
 }
+
 
 export default App;
