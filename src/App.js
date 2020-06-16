@@ -47,9 +47,10 @@ class App  extends Component{
                     <Route render={ () => <Nav handleSearch={this.handleSearch} /> } />
 
                     <Switch>
-                        <Route path="/search/:searchKey"  render={ () => <SearchForm handleSearch={this.handleSearch}/> }/>
+                        <Route path="/search/:searchKey"  render={ () =>        
                         <PhotosContainer photos={this.state.photos}
-                                        title={this.state.searchKey}/>
+                                        title={this.state.searchKey}/>  }/>
+
                         <Route component={NotFound} />
                     </Switch>
                 </div>
