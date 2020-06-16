@@ -14,7 +14,7 @@ class App  extends Component{
         this.state = {
             photos : [],
             isLoading: false,
-            searchKey : "vacation"
+            searchKey : ""
         };
     }
 
@@ -24,16 +24,14 @@ class App  extends Component{
     }
 
     handleSearch = (searchKey) => {
-        this.setState({ 
-            searchKey: searchKey
-        });
 
         debugger;
         console.log("searching....");
         fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchKey}&per_page=24&format=json&nojsoncallback=1`)
         .then(response => response.json())
         .then(responseData => {
-            this.setState({photos: responseData.photos.photo})
+            this.setState({photos: responseData.photos.photo,
+                            searchKey: searchKey })
         })
         .catch(error => console.log("Error while fetching data", error))
     };
