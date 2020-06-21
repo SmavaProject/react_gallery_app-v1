@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import Photo from "./Photo";
+import { withRouter } from 'react-router-dom';
 
 class PhotosContainer extends Component{
+
+    componentDidMount(){
+        if(this.props.photos.length < 1){
+            this.props.history.push("/empty-search");
+        }
+    }
 
     render() {
         console.log(this.props.photos);
@@ -22,4 +29,4 @@ class PhotosContainer extends Component{
 
 }
 
-export default PhotosContainer;
+export default withRouter (PhotosContainer);
