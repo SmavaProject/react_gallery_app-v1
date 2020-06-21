@@ -6,36 +6,36 @@ class SearchForm extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            searchKey: ""
-        }
+        this.state = {value: ""}
         this.searchInput = React.createRef();
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     /***
      * 
      */
-    handleSubmit = (e) => {
-        debugger;
+    handleSubmit (e) {
         e.preventDefault();
-        this.props.handleSearch(this.searchInput.current.value);
-        this.props.history.push(`/search/${this.state.searchKey}`);
+        this.props.handleSearch(this.state.value);
+        this.props.history.push(`/search/${this.state.value}`);
         e.currentTarget.reset();
-        //this.setState({ searchKey: ""});
     }
 
-    handleChange = (e) =>{
-        debugger;
-        this.setState({ searchKey: this.searchInput.current.value});
+    handleChange (e){
+        this.setState({value: e.target.value});
     }
 
     render() {
+        const {match, location, history} = this.props;
         debugger;
         return (
-            <form onSubmit={ () =>this.handleSubmit} className="search-form">
+            <form onSubmit={this.handleSubmit} className="search-form">
                 <input 
                 type="search" 
                 name="search" 
+                value={this.state.value}
                 placeholder="Search" 
                 ref={this.searchInput}
                 onChange={this.handleChange}
