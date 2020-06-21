@@ -7,14 +7,14 @@ class SearchForm extends Component {
     constructor(props){
         super(props);
         this.state = {value: ""}
-        this.searchInput = React.createRef();
-
+        //this.searchInput = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
-    /***
-     * 
+    /**
+     * calls search function and redirects a user to a new route
+     * @param { event} e 
      */
     handleSubmit (e) {
         e.preventDefault();
@@ -23,13 +23,15 @@ class SearchForm extends Component {
         e.currentTarget.reset();
     }
 
+    /**
+     * updates the state of the component when a new value is entered in the search field
+     * @param { event} e 
+     */
     handleChange (e){
         this.setState({value: e.target.value});
     }
 
     render() {
-        const {match, location, history} = this.props;
-        debugger;
         return (
             <form onSubmit={this.handleSubmit} className="search-form">
                 <input 
@@ -37,7 +39,6 @@ class SearchForm extends Component {
                 name="search" 
                 value={this.state.value}
                 placeholder="Search" 
-                ref={this.searchInput}
                 onChange={this.handleChange}
                 required
                 />
