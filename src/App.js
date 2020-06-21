@@ -13,17 +13,16 @@ class App  extends Component{
         super();
         this.state = {
             photos : [],
-            isLoading: false,
-            searchKey : ""
+            isLoading: true
         };
     }
 
     componentDidMount(){
-        this.handleSearch(this.state.searchKey);
+        this.handleSearch();
 
     }
 
-    handleSearch = (searchKey) => {
+    handleSearch = (searchKey = "vacation") => {
 
         debugger;
         console.log("searching....");
@@ -47,10 +46,14 @@ class App  extends Component{
                     <Route render={ () => <Nav handleSearch={this.handleSearch} /> } />
 
                     <Switch>
+                        <Route exact path="/" render={ () => 
+                            < PhotosContainer 
+                                photos={this.state.photos}
+                                title={this.state.searchKey} /> }/>
                         <Route path="/search/:searchKey"  render={ () =>        
-                        <PhotosContainer photos={this.state.photos}
-                                        title={this.state.searchKey}/>  }/>
-
+                            <PhotosContainer
+                                photos={this.state.photos}
+                                title={this.state.searchKey}/>  }/>
                         <Route component={NotFound} />
                     </Switch>
                 </div>

@@ -13,16 +13,15 @@ class SearchForm extends Component {
     }
 
     /***
-     * when a user clicks on submit, we dont need to perform a search.
-     * We need to redirect them to a new route and App component will perform search for us
+     * 
      */
     handleSubmit = (e) => {
         debugger;
         e.preventDefault();
-        //this.props.handleSearch(this.searchInput.current.value);
+        this.props.handleSearch(this.searchInput.current.value);
         this.props.history.push(`/search/${this.state.searchKey}`);
         e.currentTarget.reset();
-        this.setState({ searchKey: ""});
+        //this.setState({ searchKey: ""});
     }
 
     handleChange = (e) =>{
@@ -40,6 +39,7 @@ class SearchForm extends Component {
                 placeholder="Search" 
                 ref={this.searchInput}
                 onChange={this.handleChange}
+                required
                 / >
                 <button type = "submit" >
                 <SearchSVG/>
