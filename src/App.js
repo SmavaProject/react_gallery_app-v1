@@ -24,13 +24,14 @@ class App  extends Component{
 
     handleSearch = (searchKey = "vacation") => {
 
-        debugger;
+        this.setState({isLoading: true})
         console.log("searching....");
         fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchKey}&per_page=24&format=json&nojsoncallback=1`)
         .then(response => response.json())
         .then(responseData => {
             this.setState({photos: responseData.photos.photo,
-                            searchKey: searchKey })
+                            searchKey: searchKey, 
+                            isLoading: false})
         })
         .catch(error => console.log("Error while fetching data", error))
     };
@@ -46,11 +47,13 @@ class App  extends Component{
                     <Route render={ () => <Nav handleSearch={this.handleSearch} /> } />
 
                     <Switch>
-                        <Route exact path="/" render={ () => 
-                            < PhotosContainer 
+                        <Route exact path="/" render={
+                            () =>   this.state.isLoading ? <h3>The page is loading, please wait...</h3> :  
+                           < PhotosContainer 
                                 photos={this.state.photos}
-                                title={this.state.searchKey} /> }/>
-                        <Route path="/search/:searchKey"  render={ () =>        
+                                title={this.state.searchKey}/> }/>
+                        <Route path="/search/:searchKey"  render={ 
+                            () =>   this.state.isLoading ? <h3>The page is loading, please wait...</h3> :      
                             <PhotosContainer
                                 photos={this.state.photos}
                                 title={this.state.searchKey}/>  }/>

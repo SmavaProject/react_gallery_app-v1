@@ -40,7 +40,7 @@ class SearchForm extends Component {
                 ref={this.searchInput}
                 onChange={this.handleChange}
                 required
-                / >
+                />
                 <button type = "submit" >
                 <SearchSVG/>
             </button>
