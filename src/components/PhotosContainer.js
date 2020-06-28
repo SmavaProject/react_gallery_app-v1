@@ -17,7 +17,8 @@ class PhotosContainer extends Component{
                 <h3>{this.props.title}</h3>
                 <ul>
                    {this.props.photos.map((photo, index) =>
-                       <li>  <Photo
+                       <li key={photo.id.toString()}>  
+                            <Photo
                             id={photo.id}
                             src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
                             alt={photo.title}

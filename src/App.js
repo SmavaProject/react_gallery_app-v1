@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Nav from "./components/Nav";
 import SearchForm from "./components/SearchForm";
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import PhotosContainer from "./components/PhotosContainer";
 import NotFound from "./components/NotFound";
 import EmptySearch from "./components/EmptySearch";
@@ -61,7 +61,7 @@ class App  extends Component{
                             <PhotosContainer
                                 photos={this.state.photos}
                                 title={this.state.searchKey}/>  }/>
-                            <Route path="/empty-search" render={()=> <EmptySearch/>} />
+                        <Route path="/empty-search" render={()=> <EmptySearch/>} />
                         <Route component={NotFound} />
                     </Switch>
                 </div>
