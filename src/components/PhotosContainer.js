@@ -11,7 +11,6 @@ class PhotosContainer extends Component{
     }
 
     render() {
-        console.log(this.props.photos);
         return (
             <div className="photo-container">
                 <h3>{this.props.title}</h3>

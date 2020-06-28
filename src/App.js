@@ -29,7 +29,6 @@ class App  extends Component{
      */
     handleSearch = (searchKey = "vacation") => {
         this.setState({isLoading: true})
-        console.log("searching....");
         fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchKey}&per_page=24&format=json&nojsoncallback=1`)
         .then(response => response.json())
         .then(responseData => {
