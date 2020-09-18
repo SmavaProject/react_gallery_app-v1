@@ -12,6 +12,12 @@ class SearchForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            console.log('Route change! in search');
+        }
+    }
     /**
      * calls search function and redirects a user to a new route
      * @param { event} e 
@@ -28,17 +34,21 @@ class SearchForm extends Component {
      * @param { event} e 
      */
     handleChange (e){
+        console.log("the");
         this.setState({value: e.target.value});
     }
 
     render() {
+        console.log("the");
+        console.log("this.props.location.pathname" + this.props.location.pathname);
         return (
             <form onSubmit={this.handleSubmit} className="search-form">
                 <input 
                 type="search" 
                 name="search" 
                 value={this.state.value}
-                placeholder="Search" 
+                placeholder="Search"
+                title={this.state.value} 
                 onChange={this.handleChange}
                 required
                 />

@@ -6,6 +6,7 @@ class PhotosContainer extends Component{
 
     componentDidMount(){
         if(this.props.photos.length < 1){
+            console.log("photos are emptx")
             this.props.history.push("/empty-search");
         }
     }
