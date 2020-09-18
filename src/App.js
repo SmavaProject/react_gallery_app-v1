@@ -4,7 +4,6 @@ import SearchForm from "./components/SearchForm";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import PhotosContainer from "./components/PhotosContainer";
 import NotFound from "./components/NotFound";
-import EmptySearch from "./components/EmptySearch";
 
 import apiKey from "./config";
 
@@ -116,7 +115,6 @@ class App  extends Component{
                             <PhotosContainer
                                 photos={this.state.photos}
                                 title={this.state.searchKey}/>  }/>
-                        <Route path="/" render={()=> <EmptySearch/>} />
                         <Route component={NotFound} />
                     </Switch>
                 </div>

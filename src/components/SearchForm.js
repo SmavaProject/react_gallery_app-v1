@@ -7,7 +7,6 @@ class SearchForm extends Component {
     constructor(props){
         super(props);
         this.state = {value: ""}
-        //this.searchInput = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -34,13 +33,10 @@ class SearchForm extends Component {
      * @param { event} e 
      */
     handleChange (e){
-        console.log("the");
         this.setState({value: e.target.value});
     }
 
     render() {
-        console.log("the");
-        console.log("this.props.location.pathname" + this.props.location.pathname);
         return (
             <form onSubmit={this.handleSubmit} className="search-form">
                 <input 

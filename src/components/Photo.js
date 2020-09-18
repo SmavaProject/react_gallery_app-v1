@@ -4,10 +4,11 @@ class Photo extends Component{
 
     render(){
         return (
-            <img src={this.props.src} alt={this.props.alt}/>
+            <li>
+                <img src={this.props.src} alt={this.props.alt}/>
+            </li>
         );
     }
-
 }
 
 export default Photo;

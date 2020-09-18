@@ -3,18 +3,11 @@ import {NavLink} from "react-router-dom";
 
 class Nav extends Component{
 
-    componentDidUpdate(prevProps) {
-        //if (this.props.location.pathname !== prevProps.location.pathname) {
-            console.log('Route change!');
-       // }
-    }
-
     componentDidMount(){
         console.log('mount change!');
     }
 
     render() {
-        //console.log('this.props.location.pathname' + this.props.location.pathname);
         return (
     <div className="main-nav">
         <ul>

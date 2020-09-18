@@ -1,33 +1,31 @@
-import React, {Component} from "react";
+import React from "react";
 import Photo from "./Photo";
-import { withRouter } from 'react-router-dom';
+import EmptySearch from "./EmptySearch";
 
-class PhotosContainer extends Component{
+const PhotosContainer = ({photos, title}) => {
 
-    componentDidMount(){
-        if(this.props.photos.length < 1){
-            console.log("photos are emptx")
-            this.props.history.push("/empty-search");
-        }
+    let allPhotos;
+
+    if (photos.length < 1){
+        allPhotos = <EmptySearch />;
+    }else{
+        allPhotos =  photos.map((photo) => (
+            <Photo
+                id={photo.id}
+                key={photo.id}
+                src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
+                alt={photo.title}
+            />
+          ));
     }
 
-    render() {
-        return (
-            <div className="photo-container">
-                <h3>{this.props.title}</h3>
-                <ul>
-                   {this.props.photos.map((photo, index) =>
-                       <li key={photo.id.toString()}>  
-                            <Photo
-                            id={photo.id}
-                            src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
-                            alt={photo.title}
-                         /></li>
-                     )}
-                </ul>
-            </div>);
-    }
-
+    return (
+        <div className="photo-container">
+            <h3>{title}</h3>
+            <ul>
+               {allPhotos}
+            </ul>
+        </div>);
 }
 
-export default withRouter (PhotosContainer);
+export default PhotosContainer;
